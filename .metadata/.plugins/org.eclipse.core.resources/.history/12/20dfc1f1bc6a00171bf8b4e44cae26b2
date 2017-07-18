@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+<%!
+	public float show(float f){
+		return f;
+	}
+%>
+
+<%= "show() 메서드의 호출 결관느 : " + show(5)  %>
+
+</body>
+</html>
