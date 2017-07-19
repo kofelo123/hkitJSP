@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<jsp:useBean id="info" scope="page" class="key.User" />
+
+현재 값:
+<jsp:getProperty name="info" property="name"/>
+<jsp:getProperty name="info" property="num"/>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

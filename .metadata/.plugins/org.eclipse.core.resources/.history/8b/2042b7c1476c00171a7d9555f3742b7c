@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<jsp:useBean id="info" scope="page" class="key.User" />
+
+현재 값:
+<jsp:getProperty name="info" property="*"/>
+
+<br>
+Form 으로부터 설정된 값:
+<jsp:setProperty name="info" property="*"/>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
