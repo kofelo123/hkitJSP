@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
+<jsp:useBean id="loginId" scope="page" class="login.User" />
+<jsp:setProperty name="loginId" property="*" />
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<table border="1">
+			<tr>
+				<td colspan="2" align="center"><jsp:getProperty name="loginId" property="name"/> 회원님이 작성하신 내용입니다. 확인해 주세요</td>
+			</tr>
+			<tr>
+				<td style="width:30%">아이디</td>
+				<td><%= loginId.getId() %></td>
+			</tr>
+			<tr>
+				<td>패스워드</td>
+				<td><%= loginId.getPw() %></td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td><%= loginId.getName() %></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td><%= loginId.getEmail() %></td>
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td><%= loginId.getCall() %></td>
+			</tr>
+			<tr>
+				<td><input type="button"  value="확인완료">&nbsp;&nbsp;<input
+					type="reset" value="다시쓰기"></td>
+			</tr>
+		</table>
+		
+		
+</body>
+</html>
