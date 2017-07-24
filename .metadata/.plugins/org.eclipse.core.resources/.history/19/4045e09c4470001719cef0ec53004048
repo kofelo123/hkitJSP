@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	function check(){
+		var blank = 0;
+		if(form1.id.value =="")
+			blank = 1;
+		if(form1.password.value == "")
+			blank = 1;
+		if(blank ==1){
+			alert("빈란이 있습니다. 채워주세요.");
+			return (false)
+			}
+		else{
+			return (true);
+			}
+		}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

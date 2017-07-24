@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script language="javascript">
+	function check(){
+		var blank = 0;
+		if(form1.id.value == "")
+			blank = 1;
+		if(form1.password.value == "")
+			blank = 1;
+		if(form1.name.value =="")
+			blank = 1;
+		if(form1.email.value =="")
+			blank = 1;
+		if(blank ==1){
+			alert("모든 내용을 입력해 주세요.");
+			return (false)
+		}
+		else{
+			return (true);
+		}
+	}
+	
+	function check_num(str){
+		if(isNaN(str)){
+			alert("숫자만 입력하세요.");
+			return "";
+		}else return str;
+	}
+</script>
+
+</body>
+</html>
