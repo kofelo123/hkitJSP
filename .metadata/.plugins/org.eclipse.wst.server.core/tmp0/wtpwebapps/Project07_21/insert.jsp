@@ -12,6 +12,7 @@
 	String sql = null;
 	Connection conn = null;
 	Statement st = null;
+	PreparedStatement pst = null;
 	ResultSet rs = null;
 	int cnt = 0;
 	
@@ -27,11 +28,22 @@
 		rs= st.executeQuery("select * from woori where id = '"+id +"'");
 		
 		if(!(rs.next())){
-			st=conn.createStatement();
+			
+			sql = "insert into woori values(?,?,?,?)";
+			
+			pst=conn.prepareStatement(sql);
+			
+			pst.setString(1, id);
+			pst.setString(2, name);
+			pst.setInt(3, password);
+			pst.setString(4, email);
+			
+			cnt = pst.executeUpdate();
+			/* st=conn.createStatement();
 			sql="insert into woori(id,password,name,email)";
 			sql=sql+" values('"+ id +"',"+ password + ",";
 			sql=sql+ "'"+ name +"','"+ email +"')";
-			cnt = st.executeUpdate(sql);
+			cnt = st.executeUpdate(sql); */
 			if(cnt >0)
 				out.println("데이터가 성공적으로 입력되었습니다.");
 			else
@@ -39,6 +51,7 @@
 		}else
 			out.println("id가 이미 등록되어 있습니다.");
 		
+		pst.close();
 		st.close();
 		conn.close();
 			

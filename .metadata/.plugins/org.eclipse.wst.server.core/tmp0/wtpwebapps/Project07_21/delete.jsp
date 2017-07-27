@@ -20,7 +20,7 @@
 		st = con.createStatement();
 		sql = "delete from woori where id= '" + id + "'";
 		st.executeUpdate(sql);
-		
+			
 		con.close();
 		st.close();
 		

@@ -10,7 +10,9 @@
 	
 	String sql = null;
 	Connection con = null;
-	Statement st= null;
+	/* Statement st= null; */
+	PreparedStatement pst = null;
+	int cnt= 0;
 	
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
@@ -25,14 +27,23 @@
 	}
 	
 	try{
-		st=con.createStatement();
-		
-		sql="update woori set " ;
+		/* st=con.createStatement(); */		
+	/* 	sql="update woori set " ;
 		sql = sql + "name ='" + name + "'," + " email = '" + email + "'";
-		sql = sql + " where id = '" + id + "'" ;
-		st.executeUpdate(sql);
+		sql = sql + " where id = '" + id + "'" ; */
+	/* 	st.executeUpdate(sql); */
+		sql="update woori set name=?,email=? where id=?";
+		pst=con.prepareStatement(sql);
+		
+		pst.setString(1, name);
+		pst.setString(2, email);
+		pst.setString(3, id);
+		cnt=pst.executeUpdate();
+		
+		
 		con.close();
-		st.close();
+		pst.close();
+	/* 	st.close(); */
 	}catch(SQLException e){
 		out.println(e);
 	}

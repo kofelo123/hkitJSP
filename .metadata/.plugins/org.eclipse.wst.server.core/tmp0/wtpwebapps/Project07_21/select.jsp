@@ -6,7 +6,7 @@
 <%
 	String id = request.getParameter("id");
 	String password = request.getParameter("password").trim();
-	String sql="select * from woori where id=?";
+	String sql="select * from woori where id=? and password =?";
 	Connection con = null;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
@@ -25,7 +25,8 @@
 	
 	try{
 		pst = con.prepareStatement(sql);
-		pst.setString(1, id);
+		pst.setString(1, id); 
+		pst.setInt(2, Integer.parseInt(password));
 		
 		rs = pst.executeQuery();
 		
@@ -43,7 +44,7 @@
 			<BR>E-mail :
 			<input type="text" name="email" value="<%=rs.getString("email")%>">
 			<input type="submit" name="change" value="수정하기">
-			<a href="delete.jsp?id=<%=id%>"> 삭제하기</a>
+			 <a href="delete.jsp?id=<%=id%>"> 삭제하기</a>
 			</form>
 			
 			<% } else { %>

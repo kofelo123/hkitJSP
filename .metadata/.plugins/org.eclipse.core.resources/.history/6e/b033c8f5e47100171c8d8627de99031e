@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" info="insert" errorPage="error.jsp" import="java.sql.*,java.text.*,java.util.*" %>
+<% request.setCharacterEncoding("utf-8"); %>
+
+<%
+	String userid = request.getParameter("userid");
+	String username = request.getParameter("username");
+	String password = request.getParameter("password");
+	String securitynum1 = request.getParameter("securitynum1");
+	String securitynum2 = request.getParameter("securitynum2");
+	String securitynum = securitynum1+"-"+securitynum2;
+	String email = request.getParameter("email");
+%>

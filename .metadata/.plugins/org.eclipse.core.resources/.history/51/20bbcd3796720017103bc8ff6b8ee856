@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" errorPage="error.jsp" import="java.sql.*,java.io.*,java.net.*"%>
+
+<%
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	
+	String securitynum = request.getParameter("securitynum");
+	String query = new String();
+	
+	int check_count = 0;
+	
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+	}catch(ClassNotFoundException e){
+		out.println(e);
+	}
+	
+	try{
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/member","hkitJeongwon","gj0213");
+		stmt= conn.c
+	}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

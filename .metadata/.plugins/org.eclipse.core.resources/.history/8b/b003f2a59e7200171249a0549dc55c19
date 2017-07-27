@@ -1,0 +1,80 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" errorPage="error.jsp" import="java.sql.*,java.io.*,java.net.*" %>
+<% request.setCharacterEncoding("utf-8"); %>
+<%
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	
+	String searchaddr = request.getParameter("addr");
+	String query = new String();
+	String zipcode = new String();
+	String sido = new String();
+	String gugun = new String();
+	String dong = new String();
+	String bunji = new String();
+	String address = new String();
+	String address1 = new String();
+	
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+	}catch(ClassNotFoundException e){
+		out.println(e);
+	}
+	
+	try{
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/member","hkitJeongwon","gj0123");
+		stmt = conn.createStatement();
+	}catch(SQLException e){
+		
+	}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>우편번호 검색</title>
+<script>
+	function choiceZipcode(zipcodeno, address1){
+		opener.join.zipcode1.value = zipcodeno.substring(0,3);
+		opener.join.zipcode2.value = zipcodeno.substring(4,7);
+		opener.join.address1.value = address1;
+		opener.join.address2.focus();
+		self.close();
+
+		}
+</script>
+</head>
+<body text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="#FFFFFF">
+<form name="zipcode" method="post" action="zipcode_search.jsp">
+	<table align="center" width="95%" height="62" border="0" cellspacing="0" cellpadding="3" class="style2">
+		<tr>
+			<td height="30">
+				<font color="#405893">
+					찾고자하는 주소의 동/읍/면 이름을 입력하세요.<br>
+					검색한 후 주소를 클릭하세요
+				</font>
+				</td>
+			</tr>
+	</table>
+	<table align="center" width="95%" border="0" bgcolor="#B6C1D6">
+		<tr>
+			<td bgcolor="#FFFFFF" align="center">
+				<input type="text" name="addr" maxlength="15" size="15" class="style2">
+				<input type="submit" value="검색">
+			</td>
+		</tr>
+	</table>
+</form>
+<br/>
+
+<%
+	if(searchaddr != null){
+%>
+<table align="center" width="95%" border="0" cellspacing="0" cellpadding="3" bordercolor="#999999" class="style2">
+	<tr align="center">
+		<td width="27%" bgcolor="#B4B4DA"><font color="#FFFFFF">우편번호</font></td>
+		<td width="73%" bgcolor="#E7EDFE"><font color="#FFFFFF">우편번호</font></td>
+		
+</table>
+</body>
+</html>
