@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*"%>
+<%
+	String admPwd = "manager";
+	String password =request.getParameter("password");
+	if(admPwd.equals(password))
+		response.sendRedirect(response.encodeRedirectURL("select_all.jsp"));
+	else{
+%>
+<script>alert("인증이 허용된 사람만 가능 핳ㅂ니다. 확인 버튼을 누르세요.!");
+</script>
+<!DOCTYPE html>
+<html>
+<head>
+<title>우리 회원 정보관리</title>
+</head>
+<body>
+
+</body>
+</html>

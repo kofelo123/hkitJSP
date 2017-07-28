@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*"%>
+<%
+	Connection con = null;
+	Statement st = null;
+	ResultSet rs= null;
+	String a = null;
+	
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+	}catch(ClassNotFoundException e){
+		out.println(e);
+	}
+	
+	try{
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/member","hkitJeongwon","gj0123");
+	}catch(SQLException e){
+		out.println(e);
+	}
+	
+	try{
+		st = con.createStatement();
+		rs = st.executeQuery("select * from member order by userid");
+	
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>우리 회원 정보관리</title>
+<table width="500" border="1" bordercolorlight="#999999" bordercolordark="#FFFFFF" cellpadding="3" cellspacing="0" align="center" class=style2>
+	<th background="image/sky_bar.gif">사용자 ID</th>
+	<th background="image/sky_bar.gif">이름</th>
+	<th background="image/sky_bar.gif">주소</th>
+	<% if(!(rs.next())){ %>
+	<tr><td colspan=4>등록된 회원이 없습니다.</td></tr>
+	<% } else{ 
+	do {
+		out.println("<tr>");
+		out.println("<td align='center'>" + rs.getString("userid") + "</td>");
+		out.println("<td align='center'>" + rs.getString("username") + "</td>");
+		out.println("<td> " + rs.getString("address1"));
+		out.println(rs.getString("address2")+"</td>");
+		%>
+	}
+	
+	
+
+</table>
+</head>
+
+<body>
+
+</body>
+</html>

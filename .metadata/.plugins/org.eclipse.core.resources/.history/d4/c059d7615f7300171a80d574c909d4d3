@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*"%>
+<%
+	Object mem_id = session.getAttribute("member_id");
+	session.putValue(session.getId(), mem_id);
+	String userid = (String)session.getValue(session.getId());
+	if(userid == null)
+		session.putValue(session.getId(), mem_id);
+		userid = (String)session.getValue(session.getId());
+		if(userid == null)
+			session.putValue(session.getId(), mem_id);
+			userid = (String)session.getValue(session.getId());
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

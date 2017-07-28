@@ -63,12 +63,23 @@
 	<head>
 		<title>가입 완료</title>
 		
+	<script>
+		function doSubmit(){
+			form = document.join;
+			if(!form.userid.value){
+				alert('아이디를 입력하지 않았습니다.');
+				form.userid.focus();
+				return;
+				}
+			form.submit();
+			}
+	</script>
 	</head>
 	
 	<body text="#000000" bgcolor="#FFFFFF">
 	<br>
 	<br>
-	<form name="join" method="post" action="modify.jsp">
+	<form name="join" method="post" action="modify_session.jsp">
 		<input type="hidden" name="userid" value="<%=userid %>">
 		<input type="hidden" name="mode" value="modify">
 		<table width="500" border="1" bordercolorlight="#999999" bordercolordark="#FFFFFF" cellpadding="3" cellspacing="0" align="center" class="style2">

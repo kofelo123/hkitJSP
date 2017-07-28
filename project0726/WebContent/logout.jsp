@@ -3,6 +3,7 @@
 <%
 	session=request.getSession(false);
 	session.invalidate();
+	response.sendRedirect("left_Frame.jsp");
 %>
 <script language="javascript">
 	
