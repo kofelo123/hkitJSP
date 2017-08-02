@@ -4,8 +4,8 @@
 <% request.setCharacterEncoding("utf-8");  %>
 <%
 	Object mem_name = session.getAttribute("member_name");
-	Object mem_id = session.getAttribute("member_id");
-	session.setAttribute("member_id",mem_id);
+ 	Object mem_id = session.getAttribute("member_id");
+	session.setAttribute("member_id",mem_id); /**/
 	if(session.getValue("member_id")==null){
 %>
 <link rel="StyleSheet" href="style.css" type="text/css">
@@ -62,7 +62,7 @@
 					<td colspan="4" height="10px"></td>
 				</tr>                                                                                                                                   
 			</table>
-			<table width="133" border="0" cellspacing="0" cellpadding="0">
+			<table align=center width="133" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td height="5"></td>
 				</tr>

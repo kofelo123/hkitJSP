@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*,java.util.*"%>
+
+<%
+	String na = request.getParameter("name");
+	String em = request.getParameter("email");
+	String sub = request.getParameter("subject");
+	String cont = request.getParameter("content");
+	String ymd = (new java.util.Date()).toLocaleString();
+	String sql= null;
+	Connection con= null;
+	Statement st = null;
+	int cnt= 0;
+	
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+	}catch(ClassNotFoundException e){
+		out.println(e);
+	}
+	
+	try{
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/member","hkitJeongwon","gj0123");
+		st= con.createStatement();
+		
+		sql= "insert into guestboard(name,email,inputdate,subject,content)";
+		sql= sql + " values('" + na +'")
+	}
+%>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+	function check(){
+		with(document.filegbwrite){
+			if(subject.value.length == ){
+				alert("제목을 입력해 주세요!!");
+				subject.focus();
+				return false;
+			}
+		}
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>

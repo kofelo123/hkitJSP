@@ -9,20 +9,20 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="주민" key="selection"/>
+		<item value="name" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="주민"/>
-			<item value="아이디"/>
-			<item value="abcd"/>
-			<item value="중복확인"/>
-			<item value="password"/>
-			<item value="username"/>
-			<item value="userid"/>
-			<item value="checkvalue"/>
+			<item value="name"/>
+			<item value="content"/>
+			<item value="emp"/>
+			<item value="이름"/>
+			<item value="ffffff"/>
+			<item value="form"/>
+			<item value="글 쓰"/>
+			<item value="글쓰기"/>
 		</list>
 		<list key="replacehistory">
 		</list>

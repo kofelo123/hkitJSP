@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+	function check(){
+		with(document.filegbwrite){
+			if(subject.value.length == ){
+				alert("제목을 입력해 주세요!!");
+				subject.focus();
+				return false;
+			}
+			if(name.value.length == 0){
+				alert("이름을 입력해 주세요!!");
+				name.focus();
+				return false;
+			}
+			if(content.value.length == 0){
+				alert("내용을 입력해 주세요!");
+				content.focus();
+				return false;
+			}
+			document.filegbwrite.submit();
+		}
+	}
+</script>
+</head>
+<body>
+	<form name="filegbwrite" method="post" action="dbgb_save.jsp">
+	<text-align:center>
+		<table width="600" cellspacing="0" cellpadding="2">
+			<tr>
+				<td colspan="2" bgcolor="#1F4F8F" height="1"></td>
+			</tr>
+			<tr>
+				<td colspan="2" 
+		</table>
+		
+	</text-align:center>
+	</form>
+
+
+</body>
+</html>

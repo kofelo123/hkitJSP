@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*,java.util.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>게시판</title>
+</head>
+<body>
+<p>
+<p align="center"><font color="#0000ff" face="굴림" size="3"><string>자유 게시판</string></font>
+
+</body>
+</html>

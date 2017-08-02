@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*,java.util.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		String sql=null;
+		Connection con =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		try{
+			Class.forName("com.myql.jdbc.Driver");
+		}catch(ClassNotFoundException e){
+			out.println(e);
+		}
+		
+		try{
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/member","hkitJeongwon","gj0123");
+		}catch(SQLException e){
+			out.println(e);
+		}
+		
+		try{
+			sql = "select * from freeboard where id=?";
+		}
+	
+	%>
+
+</body>
+</html>

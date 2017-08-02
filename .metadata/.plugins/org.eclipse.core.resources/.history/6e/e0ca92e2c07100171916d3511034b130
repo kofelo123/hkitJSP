@@ -1,9 +1,0 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("utf-8");  %>
-<%
-	Object men_name = session.getAttribute("member_name");
-	Object mem_id = session.getAttribute("member_id");
-	session.setAttribute("member_id", member_id);
-	if(session.getValue("member_id")==null){
-%>

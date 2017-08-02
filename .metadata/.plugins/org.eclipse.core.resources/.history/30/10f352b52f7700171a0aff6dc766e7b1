@@ -1,0 +1,67 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*,java.util.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		String sql=null;
+		Connection con =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		try{
+			Class.forName("com.myql.jdbc.Driver");
+		}catch(ClassNotFoundException e){
+			out.println(e);
+		}
+		
+		try{
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/member","hkitJeongwon","gj0123");
+		}catch(SQLException e){
+			out.println(e);
+		}
+		
+		try{
+			sql = "select * from freeboard where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(!(rs.next())){
+				out.println("해당 내용이 없습니다.");
+			}else{
+				String em=rs.getString("email");
+				if((em != null) && (!(em.equals(""))))
+					em = "<a href=mailto:" + em + ">" + rs.getString("name")+"</a>";
+					else
+						em = rs.getString("name");
+				out.println("<table width='600' cellspacing='0' cellpadding='2'>");
+				out.println("<tr>");
+				out.println("<td height='22'>&nbsp;</td></tr>");
+				out.println("<tr align='center'>");
+				out.println("<td height='1' bgcolor='#1F4F8F'>");
+				out.println("</tr>");
+				out.println("<tr align='center' bgcolor='#DFEDFF'>");
+				out.println("<td class='button' bgcolor='#DFEDFF'>");
+				out.println("<div align='eft'><font size='2'>"+rs.getString("subject")+ "</div></td>");
+				out.println(
+				out.println(
+				out.println(
+				out.println(
+				out.println(
+				out.println(
+				out.println(
+				out.println(
+				out.println(
+			}
+		}
+	
+	%>
+
+</body>
+</html>
