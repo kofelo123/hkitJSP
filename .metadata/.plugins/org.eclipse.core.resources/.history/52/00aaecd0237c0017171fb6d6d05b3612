@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" import="java.sql.*,java.text.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+	function setvalue(f) {
+		f.quantity.value = 0;
+		f.submit();
+	}
+</script>
+</head>
+<body>
+	<p align="center">
+		<font color=#0000ff face=굴림 size=+1> <STRONG>쇼핑 목록</STRONG>
+		</font>
+	</p>
+	<center>
+		<TABLE border=0 width=600 cellpadding=4 cellspacing=4
+			style="font-size: 10pt">
+			<TR>
+				<TH width=5% bgcolor=#003399><FONT color=black face=굴림><NOBR>번호</NOBR></FONT>
+				</TH>
+				<TH width=20% bgcolor=#003399><FONT color=black face=굴림><NOBR>상품명</NOBR></FONT>
+				</TH>
+				<TH width=20% bgcolor=#003399><FONT color=black face=굴림><NOBR>제조원</NOBR></FONT>
+				</TH>
+				<TH width=25% bgcolor=#003399><FONT color=black face=굴림><NOBR>주문
+							수량</NOBR></FONT></TH>
+				<TH width=10% bgcolor=#003399><FONT color=black face=굴림><NOBR>판매가(원)</NOBR></FONT>
+				</TH>
+				<TH width=15% bgcolor=#003399><FONT color=black face=굴림><NOBR>합계(수량*판매가)</NOBR></FONT>
+				</TH>
+			</TR>
+	</center>
+
+</body>
+</html>

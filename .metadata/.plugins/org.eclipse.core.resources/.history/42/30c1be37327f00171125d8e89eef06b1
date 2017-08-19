@@ -1,0 +1,76 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+	function check(){
+		with(document.insertForm){
+			if(name.value.length == 0){
+				alert("이름은 반드시 입력해야 합니다.");
+				name.focus();
+				return false;
+				}
+			if(phonenum.value.length == 0){
+				alert("전화번호는 반드시 입력해야 합니다.");
+				phonenum.focus();
+				return false;
+				}
+			if(birthday.value.length == 0){
+				alert("생일은 반드시 입력해야 합니다.");
+				birth.focus();
+				return false;
+				}
+			document.insertForm.submit();			
+			}
+		}
+</script>
+</head>
+
+<body>
+
+	<center>
+		<h1>주소록:등록화면</h1>
+		<hr>
+		<a href="list.jsp">주소록 등록</a><br>
+		<br>
+		<form name="insertForm" method="get" action="addr_insert_save.jsp">
+			<table width="500" border='1' style="text-align:center;background-color:#7ec6ef;color:white">
+	
+			<tr>
+				<th>이름</th>
+				<td><input type="text" name="name" size="40px"></td>
+			</tr>
+			<tr>
+				<th>e-mail</th>
+				<td><input type="text" name="email" ></td>
+			</tr>
+			<tr>
+				<th>전화번호</th>
+				<td><input type="text" name="phonenum" ></td>
+			</tr>
+			<tr>
+				<th>생일</th>
+				<td><input type="date" name="birthday" ></td>
+			</tr>
+			<tr>
+				<th>회사</th>
+				<td><input type="text" name="company" ></td>
+			</tr>
+			<tr>
+				<th>메모</th>
+				<td><input type="text" name="memo" ></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="저장" onClick="check()">
+				<input type="reset" value="취소"></td>
+			</tr>
+			
+
+		</table>
+	</form>
+	</center>
+
+</body>
+</html>

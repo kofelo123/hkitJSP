@@ -31,16 +31,17 @@
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/member","hkitJeongwon","gj0123");
 		
 		
-		sql = "select max(id) from freeboard"; //max함수로 id가장큰것을 찾는다.
+		sql = "select max(id) from freeboard"; //max함수로 id가장큰것을 찾는다.(id가 PK인데 DB에서 autoincrement방법 말고 max로 찾는다.)
 		
 		pstmt = con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		
-		if(!(rs.next()))//ResultSet에 없으면 id=1
+		if(!(rs.next()))//ResultSet에 없으면 아무글도 없을때
 			id=1;
 		else{
 			id= rs.getInt(1)+1;//
 			rs.close();
+			
 		}
 		sql="insert into freeboard values(?,?,?,?,?,?,?,?,?,?,?)";
 		pstmt=con.prepareStatement(sql);

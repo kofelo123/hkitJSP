@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
+<%
+	try{
+		session=request.getSession();
+		String id=request.getParameter("id");
+		int qty = Integer.parseInt(request.getParameter("quantity"));
+		
+		String ca="";
+		String pn="";
+		
+		if(request.getParameter("cfat") != null)
+			if(!(request.getParameter(("cat").equals(""))))
+					ca=request.getParameter("cat");
+			
+		if (request.getParameter("pname") != null) 
+			  if ( !(request.getParameter("pname").equals("")) ) 
+			   pn=request.getParameter("pname");
+		String[] a = session.getValueNames();
+		
+		for(int i=0; i< a.length; i++){
+			if(id.equals(a[i])){
+				int old=((Integer)session.getValue(id)).intValue();
+				qty =qty+old;
+			}
+		}
+	}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

@@ -3,6 +3,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+	function check(){
+		with(document.msgsearch){
+			if(sval.value.length == 0){
+				alert("검색어를 입력해 주세요!!");
+				sval.focus();
+				return false;
+				}
+				document.msgsearch.submit();
+			}
+		}
+	function rimgchg(p1,p2){
+		if(p2==1)
+			document.images[p1].src="image/open.gif";
+		else
+			document.images[p1].src="image/arrow.gif";
+		}
+
+	function imgchg(p1,p2){
+		if(p2==1)
+			document.images[p1].src= "image/open.gif";
+		else
+			document.images[p1].src="image/close.gif";
+		}
+</script>
 <title>게시판</title>
 </head>
 <body>
@@ -30,39 +55,41 @@
 	Vector email = new Vector();
 	Vector subject = new Vector();
 	Vector rcount = new Vector();
-	Vector keyid=new Vector();
 	
-	int where = 1;
+	Vector step = new Vector();
+	Vector keyid=new Vector();//PK id값을 저장할 벡터.
 	
-	int totalgroup=0;
-	int maxpages=2;
-	int startpage=1;
-	int endpage=startpage+maxpages-1;
-	int wheregroup=1;
+	int where = 1; //보여줄 페이지
 	
-	if(request.getParameter("go") != null){
+	int totalgroup=0;//전체그룹수
+	int maxpages=2;//한그룹에 포함시킬 페이지수
+	int startpage=1;//그룹의 시작페이지
+	int endpage=startpage+maxpages-1;//그룹의 마지막페이지
+	int wheregroup=1;//보여줄 페이지 그룹
+	
+	if(request.getParameter("go") != null){ //페이지번호 링크를 누를때 go값 전달됨. -> where로 저장.
 		where = Integer.parseInt(request.getParameter("go"));
 		wheregroup = (where-1)/maxpages + 1;
 		startpage=(wheregroup-1) * maxpages+1;
 		endpage=startpage+maxpages-1;
-	}else if (request.getParameter("gogroup") != null){
+	}else if (request.getParameter("gogroup") != null){//다음,이전,처음 ,마지막 링크누를시에 gogroup값 전달 -> wheregroup을 gogroup값을 변경한다.
 		wheregroup = Integer.parseInt(request.getParameter("gogroup"));
 		startpage=(wheregroup-1) * maxpages+1;
 		where = startpage;
 		endpage=startpage+maxpages-1;
 	}
-	int nextgroup=wheregroup+1;
+	int nextgroup=wheregroup+1;//다음그룹, 이전그룹을 계산
 	int priorgroup = wheregroup-1;
 	
 	int nextpage=where+1;
 	int priorpage = where-1;
-	int startrow=0;
+	int startrow=0;//보여줄 페이지에 포함되는 첫번쨰 로우 와 마지막 번쨰 로우를 저장
 	int endrow=0;
-	int maxrows=2;
-	int totalrows=0;
-	int totalpages =0;
+	int maxrows=5;//페이지당 보여줄 로우
+	int totalrows=0;//전체로우개수(게시판 올린 글수)
+	int totalpages =0;//전체 페이지수
 	
-	int id=0;
+	int id=0; //pk키
 	
 	String em=null;
 	Connection con = null;
@@ -82,7 +109,7 @@
 	}
 	
 	try{
-		String sql="select * from freeboard order by id desc";
+		String sql="select * from freeboard order by masterid desc, replynum, step, id";
 		pstmt = con.prepareStatement(sql);
 		rs=pstmt.executeQuery();
 		if(!(rs.next())){
@@ -97,12 +124,13 @@
 				inputdate.addElement(idate);
 				subject.addElement(rs.getString("subject"));
 				rcount.addElement(new Integer(rs.getInt("readcount")));
-			}while(rs.next());
-			totalrows = name.size();
-			totalpages = (totalrows-1)/maxrows +1;
-			startrow = (where-1) * maxrows;
+				step.addElement(new Integer(rs.getInt("step")));
+			}while(rs.next());//아래부터 페이징관련 속성들 계산.
+			totalrows = name.size();//Vector name의 사이즈로 전체로우개수 얻음.
+			totalpages = (totalrows-1)/maxrows +1;//전체페이지수 구하기 (총게시글-1/페이지당게시글 )+1
+			startrow = (where-1) * maxrows;//페이지의 시작,끝 로우 id계산
 			endrow = startrow+maxrows-1;
-			if( endrow >= totalrows)
+			if( endrow >= totalrows)//초과되는경우 계산
 				endrow=totalrows-1;
 			
 			totalgroup = (totalpages-1)/maxpages +1;
@@ -111,7 +139,7 @@
 			
 			for(int j=startrow;j<=endrow;j++){
 				String temp=(String)email.elementAt(j);
-				if((temp == null) || (temp.equals("")))
+				if((temp == null) || (temp.equals("")))//email 값이 null이나 공백이 아니면 이름을 보여줄때 링크형태로 메일을 보낼수있기위한 태그를 앞뒤로 추가.
 					em = (String)name.elementAt(j);
 				else
 					em = "<a href=mailto:" + temp + ">" + name.elementAt(j) + "</a>";
@@ -125,15 +153,30 @@
 					out.println("<td align='center'>");
 					out.println(id+"</td>");
 					out.println("<td>");
-					String clink = "<a href=freeboard_read.jsp?id=" + keyid.elementAt(j);
-					clink = clink + "&page=" + where + ">" + subject.elementAt(j)+ "</a>";
-					out.println(clink+ "</td>");
+					int stepi= ((Integer)step.elementAt(j)).intValue();
+					int imgcount = j-startrow;
+					if(stepi > 0 ){
+						for(int count=0; count < stepi; count++)
+							out.println("&nbsp;&nbsp;");
+							out.println("<IMG name=icon"+imgcount+ " src=image/arrow.gif>");
+							out.print("<a href=freeboard_read.jsp?id=");
+							out.print(keyid.elementAt(j)+"&page="+ where);
+							out.print(" onmouseover=\"rimgchg(" + imgcount + ",1)\"");
+							out.print(" onmouseout=\"rimgchg(" + imgcount + ",2)\">");
+					}else{
+						out.println("<IMG name=icon"+imgcount+ " src=image/close.gif>");
+						out.print("<a href=freeboard_read.jsp?id=");
+						out.print(keyid.elementAt(j)+"&page=" + where);
+						out.print(" onmouseover=\"imgchg(" + imgcount + ",1)\"");
+						out.print(" onmouseout=\"imgchg(" + imgcount + ",2)\">");
+					}
+					out.println(subject.elementAt(j) + "</td>");
 					out.println("<td align='center'>");
 					out.println(em + "</td>");
 					out.println("<td align='center'>");
 					out.println(inputdate.elementAt(j)+ "</td>");
 					out.println("<td align='center'>");
-					out.println(rcount.elementAt(j)+ ","+"</td>");
+					out.println(rcount.elementAt(j)+"</td>");
 					out.println("</tr>");
 					
 			}
@@ -171,14 +214,35 @@
 	}
 	out.println("전체 글수 : " +totalrows);
 %>
-	<table border="0" width="600" cellpadding="0" cellspacing="0">
+<!-- 	<table border="0" width="600" cellpadding="0" cellspacing="0">
 		<tr>
 			<td align="right" valign="bottom">
 			<a href="freeboard_write.html"><img src="image/write.gif" width="66" height="21" border="0"></a>
 			</td>
 		</tr>
+	</table> -->
+	<form method="post" name="msgsearch" action="freeboard_search.jsp">
+	<table border="0" width="600" cellpadding="0" cellspacing="0">
+		<tr>
+			<td align="right" width="241">
+				<select name="stype">
+					<option value="1">이름
+					<option value="2">제목
+					<option value="3">내용
+					<option value="4">이름+제목
+					<option value="5">이름+내용
+					<option value="6">제목+내용
+					<option value="7">이름+제목+내용
+				</select>
+			</td>
+			<td width="127" align="center">
+				<input type="text" size="17" name="sval">
+			</td>
+			<td width="115">&nbsp;<a href="#" onClick="check();"><img src="image/search.gif" border="0" align='absmiddle'></a></td>
+			<td align="right" valign="bottom" width="117"><a href="freeboard_write.html"><img src="image/write.gif" border="0"></a></td>
+		</tr>
 	</table>
-		
+	</form>		
 
 </body>
 </html>

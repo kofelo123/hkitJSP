@@ -54,7 +54,7 @@
 						<tr>
 							<td width="84%">&nbsp;</td>
 							<td width="8%"><a href="freeboard_list.jsp?go=<%=request.getParameter("page") %>"><img src="image/list.jpg" width="48" height="19" border="0"></a></td>
-							<td width="8%"><a href="#" conClick="check();"><img src="image/del.jpg" width="46" height="19" border="0"></a></td>
+							<td width="8%"><a href="#" onClick="check();"><img src="image/del.jpg" width="46" height="19" border="0"></a></td>
 						</tr>
 					</table>
 				</td>

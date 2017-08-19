@@ -1,0 +1,5 @@
+package addr.dto;
+
+public class AddrDTO {
+
+}

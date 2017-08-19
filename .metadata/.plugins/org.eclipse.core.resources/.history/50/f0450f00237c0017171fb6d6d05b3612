@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.sql.*,java.text.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+	function setvalue(f){
+		f.quantity.value=0;
+		f.submit();
+		}
+</script>
+</head>
+<body>
+<p align="center">
+	<font color=#0000ff face=굴림 size=+1>
+		<STRONG>쇼핑 목록</STRONG>
+	</font>
+</p>
+<center>
+	
+</center>
+
+</body>
+</html>

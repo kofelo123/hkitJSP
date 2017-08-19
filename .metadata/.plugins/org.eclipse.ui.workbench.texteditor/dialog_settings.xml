@@ -9,29 +9,32 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="name" key="selection"/>
+		<item value="action" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="name"/>
-			<item value="content"/>
-			<item value="emp"/>
-			<item value="이름"/>
-			<item value="ffffff"/>
-			<item value="form"/>
-			<item value="글 쓰"/>
-			<item value="글쓰기"/>
+			<item value="action"/>
+			<item value="delete"/>
+			<item value="8080"/>
+			<item value="808"/>
+			<item value="8181"/>
+			<item value="addrDtoBean"/>
+			<item value="search"/>
+			<item value="keyword"/>
 		</list>
 		<list key="replacehistory">
+			<item value="keyword"/>
+			<item value="new_list"/>
+			<item value="name"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="340" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="454" key="DIALOG_HEIGHT"/>
-		<item value="799" key="DIALOG_X_ORIGIN"/>
-		<item value="222" key="DIALOG_Y_ORIGIN"/>
+		<item value="1276" key="DIALOG_X_ORIGIN"/>
+		<item value="291" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

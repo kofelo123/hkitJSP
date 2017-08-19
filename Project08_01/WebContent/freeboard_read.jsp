@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<center>
 	<%
 		String sql=null;
 		Connection con =null;
@@ -88,9 +89,10 @@
 		%>
 			<table width="600" border="0" cellpadding="0" cellspacing="5">
 			<tr>
-				<td align="right"><a href="freeboard_list.jsp?go=<%=request.getParameter("page") %>">
+				<td align="right" width="450"><a href="freeboard_list.jsp?go=<%=request.getParameter("page") %>">
 				<img src="image/list.jpg" border="0"></a></td>
-				<td width="450" align="right"><a href="freeboard_upd.jsp?id=<%=id %>&page=1"><img src="image/edit.jpg" border="0"></a></td>
+				<td width="70" align="right"><a href="freeboard_rwrite.jsp?id=<%= request.getParameter("id")%>&page=<%=request.getParameter("page") %>"><img src="image/reply.jpg" border="0"></a></td>
+				<td width="70" align="right"><a href="freeboard_upd.jsp?id=<%=id %>&page=1"><img src="image/edit.jpg" border="0"></a></td>
 				<td width="70" align="right"><a href="freeboard_del.jsp?id=<%=id %>&page=1"><img src="image/del.jpg" border="0"></a></td>
 			</tr>
 			</table>	
@@ -109,6 +111,6 @@
 			%>
 	
 
-
+</center>
 </body>
 </html>

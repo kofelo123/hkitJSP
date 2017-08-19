@@ -1,0 +1,90 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" import="java.sql.*,java.text.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script>
+	function setvalue(f) {
+		f.quantity.value = 0;
+		f.submit();
+	}
+</script>
+</head>
+<body>
+	<p align="center">
+		<font color=#0000ff face=굴림 size=+1> <STRONG>쇼핑 목록</STRONG>
+		</font>
+	</p>
+	<center>
+		<TABLE border=0 width=600 cellpadding=4 cellspacing=4
+			style="font-size: 10pt">
+			<TR>
+				<TH width=5% bgcolor=#003399><FONT color=black face=굴림><NOBR>번호</NOBR></FONT>
+				</TH>
+				<TH width=20% bgcolor=#003399><FONT color=black face=굴림><NOBR>상품명</NOBR></FONT>
+				</TH>
+				<TH width=20% bgcolor=#003399><FONT color=black face=굴림><NOBR>제조원</NOBR></FONT>
+				</TH>
+				<TH width=25% bgcolor=#003399><FONT color=black face=굴림><NOBR>주문
+							수량</NOBR></FONT></TH>
+				<TH width=10% bgcolor=#003399><FONT color=black face=굴림><NOBR>판매가(원)</NOBR></FONT>
+				</TH>
+				<TH width=15% bgcolor=#003399><FONT color=black face=굴림><NOBR>합계(수량*판매가)</NOBR></FONT>
+				</TH>
+			</TR>
+			
+	<%
+		long id=0;
+				
+		session=request.getSession();
+		
+		String[]a=session.getValueNames();
+		
+		String where="1";
+		
+		String ca="";
+		String pn="";
+		int qty=0;
+		int count=0;
+		
+		if(request.getParameter("go") != null)
+			if(!(request.getParameter("go").equals("")))
+				where = request.getParameter("go");
+		
+		if (request.getParameter("cat") != null) 
+			  if( !(request.getParameter("cat").equals("")) )
+			   ca=request.getParameter("cat");
+			 
+			 if (request.getParameter("pname") != null) 
+			  if ( !(request.getParameter("pname").equals("")) ) 
+			   pn=request.getParameter("pname");
+			 
+			 NumberFormat nf= NumberFormat.getNumberInstance();
+
+			 String pricestr="";
+			 String hap="";
+			 int price=0;
+			 long total=0;
+			 
+			 Connection con = null;
+			 PreparedStatement pstmt = null;
+			 ResultSet rs= null;
+			 String sql= null;
+			 
+			 try{
+				 Class.forName("com.mysql.jdbc.Driver");
+			 }catch(ClassNotFoundException e){
+				 e.printStackTrace();
+			 }
+			 
+			 try{
+				 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/member","hkitJeongwon","gj0123");
+			 }catch(SQLException e){
+				 e.printStackTrace();
+			 }
+	%>
+	</center>
+
+</body>
+</html>
