@@ -1,6 +1,0 @@
-
-public class addrbookVO {
-
-	private int ab_id;
-	private String ab_id;
-}

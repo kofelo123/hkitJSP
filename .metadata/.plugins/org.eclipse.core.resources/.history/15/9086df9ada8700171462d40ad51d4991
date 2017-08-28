@@ -1,0 +1,6 @@
+package spms.vo;
+
+public class Member {
+	protected int no;
+	protected String name;
+}

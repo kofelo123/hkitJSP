@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String v1 = "";
+	String v2 = "";
+	String result = "";
+	String[] selected = {"","","",""};
+	
+	if(request.getParameter("v1") != null){
+		v1 = request.getParameter("v1");
+		v2 = request.getParameter("v2");
+		String op = request.getParameter("op");
+		
+		result = calculate( Integer.parseInt(v1),
+							Integer.parseInt(v2),
+							op);
+							
+				)
+	}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

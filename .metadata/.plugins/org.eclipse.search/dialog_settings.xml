@@ -5,19 +5,25 @@
 	</section>
 	<section name="">
 		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
+		<item value="1000" key="org.eclipse.jdt.search.resultpage.limit"/>
+		<item value="TRUE" key="org.eclipse.jdt.search.resultpage.limit_enabled"/>
+	</section>
+	<section name="">
+		<item value="1000" key="org.eclipse.jdt.search.resultpage.limit"/>
+		<item value="TRUE" key="org.eclipse.jdt.search.resultpage.limit_enabled"/>
 	</section>
 	<section name="TextSearchPage">
 		<item value="12" key="HISTORY_SIZE"/>
 		<item value="false" key="CASE_SENSITIVE"/>
 		<item value="false" key="REG_EX_SEARCH"/>
-		<item value="false" key="WHOLE_WORD"/>
+		<item value="true" key="WHOLE_WORD"/>
 		<item value="false" key="SEARCH_DERIVED"/>
 		<item value="false" key="SEARCH_IN_BINARIES"/>
 		<section name="HISTORY6">
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
 			<item value="false" key="isWholeWord"/>
-			<item value="request.getParameter" key="textPattern"/>
+			<item value="executeQuery()" key="textPattern"/>
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -26,18 +32,6 @@
 			</list>
 		</section>
 		<section name="HISTORY7">
-			<item value="true" key="ignoreCase"/>
-			<item value="0" key="scope"/>
-			<item value="false" key="isWholeWord"/>
-			<item value="a href" key="textPattern"/>
-			<item value="false" key="isRegExSearch"/>
-			<list key="fileNamePatterns">
-				<item value="*"/>
-			</list>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY4">
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="isWholeWord"/>
@@ -49,11 +43,23 @@
 			<list key="workingSets">
 			</list>
 		</section>
+		<section name="HISTORY4">
+			<item value="true" key="ignoreCase"/>
+			<item value="0" key="scope"/>
+			<item value="false" key="isWholeWord"/>
+			<item value="switch" key="textPattern"/>
+			<item value="false" key="isRegExSearch"/>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
 		<section name="HISTORY10">
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
 			<item value="false" key="isWholeWord"/>
-			<item value="check" key="textPattern"/>
+			<item value="a href" key="textPattern"/>
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -64,8 +70,8 @@
 		<section name="HISTORY5">
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
-			<item value="true" key="isWholeWord"/>
-			<item value="update set" key="textPattern"/>
+			<item value="false" key="isWholeWord"/>
+			<item value="update" key="textPattern"/>
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -80,7 +86,7 @@
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
 			<item value="false" key="isWholeWord"/>
-			<item value="onclick" key="textPattern"/>
+			<item value="rs.getString" key="textPattern"/>
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -91,8 +97,8 @@
 		<section name="HISTORY8">
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
-			<item value="false" key="isWholeWord"/>
-			<item value="rs.getString" key="textPattern"/>
+			<item value="true" key="isWholeWord"/>
+			<item value="update set" key="textPattern"/>
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -104,7 +110,7 @@
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
 			<item value="false" key="isWholeWord"/>
-			<item value="table" key="textPattern"/>
+			<item value="request.getParameter" key="textPattern"/>
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -116,7 +122,7 @@
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
 			<item value="false" key="isWholeWord"/>
-			<item value="update" key="textPattern"/>
+			<item value="document." key="textPattern"/>
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -128,7 +134,7 @@
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
 			<item value="false" key="isWholeWord"/>
-			<item value="executeQuery()" key="textPattern"/>
+			<item value="go(-1)" key="textPattern"/>
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -139,8 +145,8 @@
 		<section name="HISTORY0">
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
-			<item value="false" key="isWholeWord"/>
-			<item value="go(-1)" key="textPattern"/>
+			<item value="true" key="isWholeWord"/>
+			<item value="등록 성공입니다" key="textPattern"/>
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -151,8 +157,8 @@
 		<section name="HISTORY1">
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
-			<item value="false" key="isWholeWord"/>
-			<item value="switch" key="textPattern"/>
+			<item value="true" key="isWholeWord"/>
+			<item value="function" key="textPattern"/>
 			<item value="false" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -196,10 +202,10 @@
 		<item value="TRUE" key="org.eclipse.jdt.search.resultpage.limit_enabled"/>
 	</section>
 	<section name="DialogBounds_SearchDialog">
-		<item value="1152" key="DIALOG_WIDTH"/>
+		<item value="1288" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="556" key="DIALOG_HEIGHT"/>
-		<item value="638" key="DIALOG_X_ORIGIN"/>
-		<item value="363" key="DIALOG_Y_ORIGIN"/>
+		<item value="587" key="DIALOG_X_ORIGIN"/>
+		<item value="421" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
