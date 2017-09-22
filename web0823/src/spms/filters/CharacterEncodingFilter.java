@@ -25,9 +25,6 @@ public class CharacterEncodingFilter implements Filter {
 		
 		chain.doFilter(request, response);//chain이 다음걸 가르킴
 		
-		
-		System.out.println("");
-		
 	}
 
 	@Override

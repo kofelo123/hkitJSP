@@ -1,10 +1,6 @@
 package spms.servlets;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -14,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import spms.vo.Member;
+import spms.dao.MemberDao;
 
-// ServletContext에 보관된 Connection 객체 사용  
+// ServletContext에 보관된 MemberDao 사용하기  
 @WebServlet("/member/list")
 public class MemberListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,36 +21,13 @@ public class MemberListServlet extends HttpServlet {
 	public void doGet(
 			HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
 		try {
 			ServletContext sc = this.getServletContext();
-			conn = (Connection) sc.getAttribute("conn"); 
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(
-					"SELECT MNO,MNAME,EMAIL,CRE_DATE" + 
-					" FROM MEMBERS" +
-					" ORDER BY MNO ASC");
+			MemberDao memberDao = (MemberDao)sc.getAttribute("memberDao");
+
+			request.setAttribute("members", memberDao.selectList());
 			
 			response.setContentType("text/html; charset=UTF-8");
-			ArrayList<Member> members = new ArrayList<Member>();
-			
-			// 데이터베이스에서 회원 정보를 가져와 Member에 담는다.
-			// 그리고 Member객체를 ArrayList에 추가한다.
-			while(rs.next()) {
-				members.add(new Member()
-							.setNo(rs.getInt("MNO"))
-							.setName(rs.getString("MNAME"))
-							.setEmail(rs.getString("EMAIL"))
-							.setCreatedDate(rs.getDate("CRE_DATE"))	);
-			}
-			
-			// request에 회원 목록 데이터 보관한다.
-			request.setAttribute("members", members);
-			
-			// JSP로 출력을 위임한다.
 			RequestDispatcher rd = request.getRequestDispatcher(
 					"/member/MemberList.jsp");
 			rd.include(request, response);
@@ -64,12 +37,6 @@ public class MemberListServlet extends HttpServlet {
 			request.setAttribute("error", e);
 			RequestDispatcher rd = request.getRequestDispatcher("/Error.jsp");
 			rd.forward(request, response);
-			
-		} finally {
-			try {if (rs != null) rs.close();} catch(Exception e) {}
-			try {if (stmt != null) stmt.close();} catch(Exception e) {}
-			//try {if (conn != null) conn.close();} catch(Exception e) {}
 		}
-
 	}
 }
